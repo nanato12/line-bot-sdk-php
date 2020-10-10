@@ -1159,4 +1159,43 @@ class LINEBot
             'authorityLevel' => $authorityLevel,
         ]);
     }
+
+    /**
+     * Get information about the webhook endpoint
+     *
+     * @return Response
+     */
+    public function getWebhookEndpoint()
+    {
+        return $this->httpClient->get($this->endpointBase . '/v2/bot/channel/webhook/endpoint');
+    }
+
+    /**
+     * Change the webhook endpoint
+     *
+     * @param string $url Webhook endpoint URL
+     * @return Response
+     */
+    public function updateWebhookEndpoint($url)
+    {
+        return $this->httpClient->put($this->endpointBase . '/v2/bot/channel/webhook/endpoint', [
+            'endpoint' => $url,
+        ]);
+    }
+
+    /**
+     * Validate the webhook endpoint
+     *
+     * Sends a webhook validation event to the webhook endpoint configured on the channel.
+     * If no webhook endpoint is configured on the channel, 404 is returned.
+     *
+     * @param string|null $url Webhook endpoint URL
+     * @return Response
+     */
+    public function validateWebhookEndpoint($url=null)
+    {
+        return $this->httpClient->post($this->endpointBase . '/v2/bot/channel/webhook/endpoint', [
+            'endpoint' => $url,
+        ]);
+    }
 }
