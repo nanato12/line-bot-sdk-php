@@ -29,7 +29,6 @@ use LINE\LINEBot\Constant\Flex\ComponentPosition;
 
 class ButtonComponentBuilderTest extends TestCase
 {
-
     public function test()
     {
         $result = <<<JSON

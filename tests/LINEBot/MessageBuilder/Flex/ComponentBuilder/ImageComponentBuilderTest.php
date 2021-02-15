@@ -31,7 +31,6 @@ use LINE\LINEBot\Constant\Flex\ComponentSpacing;
 
 class ImageComponentBuilderTest extends TestCase
 {
-
     public function test()
     {
         $json = <<<JSON

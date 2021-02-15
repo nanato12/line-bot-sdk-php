@@ -22,7 +22,6 @@ use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder\FillerComponentBuilder;
 
 class FillerComponentBuilderTest extends TestCase
 {
-
     public function test()
     {
         $json = <<<JSON
