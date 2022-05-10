@@ -1357,7 +1357,7 @@ JSON;
                 $event->getWebhookEventId()
             );
             $this->assertInstanceOf('LINE\LINEBot\Event\VideoPlayCompleteEvent', $event);
-            /** @var UnsendMessage $event */
+            /** @var VideoPlayCompleteEvent $event */
             $this->assertEquals('track_id', $event->getTrackingId());
         }
 
