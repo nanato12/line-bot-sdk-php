@@ -20,6 +20,9 @@ namespace LINE\LINEBot\EchoBot;
 
 use LINE\LINEBot;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Monolog\Processor\UidProcessor;
 
 class Dependency
 {
@@ -29,9 +32,9 @@ class Dependency
 
         $container['logger'] = function ($c) {
             $settings = $c->get('settings')['logger'];
-            $logger = new \Monolog\Logger($settings['name']);
-            $logger->pushProcessor(new \Monolog\Processor\UidProcessor());
-            $logger->pushHandler(new \Monolog\Handler\StreamHandler($settings['path'], \Monolog\Logger::DEBUG));
+            $logger = new Logger($settings['name']);
+            $logger->pushProcessor(new UidProcessor());
+            $logger->pushHandler(new StreamHandler($settings['path'], Logger::DEBUG));
             return $logger;
         };
 
