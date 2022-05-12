@@ -54,6 +54,8 @@ class EventRequestParser
     ];
 
     /**
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     *
      * @param string $body
      * @param string $channelSecret
      * @param string $signature
