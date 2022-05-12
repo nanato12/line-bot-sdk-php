@@ -38,6 +38,11 @@ use CURLFile;
  *
  * @package LINE
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * @SuppressWarnings(PHPMD.ExcessiveClassLength)
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
+ * @SuppressWarnings(PHPMD.TooManyMethods)
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class LINEBot
 {
@@ -223,6 +228,8 @@ class LINEBot
     /**
      * Sends arbitrary message to destination.
      *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     *
      * @param string $to Identifier of destination.
      * @param MessageBuilder $messageBuilder Message builder to send.
      * @param boolean $notificationDisabled Don't send push notifications(=true) or send(=false)
@@ -254,6 +261,8 @@ class LINEBot
 
     /**
      * Sends arbitrary message to multi destinations.
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @param array $tos Identifiers of destination.
      * @param MessageBuilder $messageBuilder Message builder to send.
@@ -287,6 +296,8 @@ class LINEBot
     /**
      * Sends push messages to multiple users at any time.
      * LINE@ accounts cannot call this API endpoint. Please migrate it to a LINE official account.
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @param MessageBuilder $messageBuilder Message builder to send.
      * @param boolean $notificationDisabled Don't send push notifications(=true) or send(=false)
@@ -329,6 +340,8 @@ class LINEBot
 
     /**
      * Parse event request to Event objects.
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @param string $body Request body.
      * @param string $signature Signature of request.
@@ -995,6 +1008,8 @@ class LINEBot
     /**
      * Send Narrowcast message.
      *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     *
      * @param MessageBuilder $messageBuilder
      * @param RecipientBuilder|null $recipientBuilder
      * @param DemographicFilterBuilder|null $demographicFilterBuilder
@@ -1050,6 +1065,8 @@ class LINEBot
     /**
      * Create audience for uploading user IDs
      *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
+     *
      * @param string $description The audience's name. Max character limit: 120
      * @param array $audiences An array of up to 10,000 user IDs or IFAs.
      * @param bool $isIfaAudience If this is false (default), recipients are specified by user IDs.
@@ -1077,6 +1094,8 @@ class LINEBot
 
     /**
      * Create audience for uploading user IDs (by file)
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      *
      * @param string $description The audience's name. Max character limit: 120
      * @param string $filePath A text file path with one user ID or IFA entered per line. Max number: 1,500,000
