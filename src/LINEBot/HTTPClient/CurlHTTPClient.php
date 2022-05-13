@@ -22,6 +22,7 @@ use LINE\LINEBot\Constant\Meta;
 use LINE\LINEBot\Exception\CurlExecutionException;
 use LINE\LINEBot\HTTPClient;
 use LINE\LINEBot\Response;
+use LINE\LINEBot\Util\ArrayUtil;
 
 /**
  * Class CurlHTTPClient.
@@ -203,7 +204,7 @@ class CurlHTTPClient implements HTTPClient
     {
         $curl = new Curl($url);
 
-        $headers = array_merge($this->authHeaders, $this->userAgentHeader, $additionalHeader);
+        $headers = ArrayUtil::arrayMerge($this->authHeaders, $this->userAgentHeader, $additionalHeader);
 
         $options = $this->getOptions($method, $headers, $reqBody);
         $curl->setoptArray($options);

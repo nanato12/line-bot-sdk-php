@@ -28,6 +28,7 @@ use LINE\LINEBot\Narrowcast\Recipient\RecipientBuilder;
 use LINE\LINEBot\Response;
 use LINE\LINEBot\SignatureValidator;
 use LINE\LINEBot\RichMenuBuilder;
+use LINE\LINEBot\Util\ArrayUtil;
 use ReflectionClass;
 use DateTime;
 use DateTimeZone;
@@ -132,7 +133,7 @@ class LINEBot
         do {
             $response = $this->getFollowerIds($continuationToken);
             $data = $response->getJSONDecodedBody();
-            $userIds = array_merge($userIds, $data['userIds']);
+            $userIds = ArrayUtil::arrayMerge($userIds, $data['userIds']);
             $continuationToken = isset($data['next']) ? $data['next'] : null;
         } while ($continuationToken);
 
@@ -215,7 +216,7 @@ class LINEBot
 
         $ref = new ReflectionClass('LINE\LINEBot\MessageBuilder\TextMessageBuilder');
         /** @var TextMessageBuilder $textMessageBuilder */
-        $textMessageBuilder = $ref->newInstanceArgs(array_merge([$text], $extra));
+        $textMessageBuilder = $ref->newInstanceArgs(ArrayUtil::arrayMerge([$text], $extra));
 
         return $this->replyMessage($replyToken, $textMessageBuilder);
     }
@@ -435,7 +436,7 @@ class LINEBot
         do {
             $response = $this->getGroupMemberIds($groupId, $continuationToken);
             $data = $response->getJSONDecodedBody();
-            $memberIds = array_merge($memberIds, $data['memberIds']);
+            $memberIds = ArrayUtil::arrayMerge($memberIds, $data['memberIds']);
             $continuationToken = isset($data['next']) ? $data['next'] : null;
         } while ($continuationToken);
 
@@ -460,7 +461,7 @@ class LINEBot
         do {
             $response = $this->getRoomMemberIds($roomId, $continuationToken);
             $data = $response->getJSONDecodedBody();
-            $memberIds = array_merge($memberIds, $data['memberIds']);
+            $memberIds = ArrayUtil::arrayMerge($memberIds, $data['memberIds']);
             $continuationToken = isset($data['next']) ? $data['next'] : null;
         } while ($continuationToken);
 
@@ -698,7 +699,7 @@ class LINEBot
                 '__file' => $imagePath,
                 '__type' => $contentType,
             ],
-            [ "Content-Type: $contentType" ]
+            ["Content-Type: $contentType"]
         );
     }
 

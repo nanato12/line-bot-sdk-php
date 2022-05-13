@@ -23,6 +23,7 @@ use LINE\LINEBot\MessageBuilder;
 use LINE\LINEBot\QuickReplyBuilder;
 use LINE\LINEBot\SenderBuilder\SenderBuilder;
 use LINE\LINEBot\MessageBuilder\Text\EmojiTextBuilder;
+use LINE\LINEBot\Util\ArrayUtil;
 
 /**
  * A builder class for text message.
@@ -75,7 +76,7 @@ class TextMessageBuilder implements MessageBuilder
             }
             $extras = array_values($extras);
         }
-        $this->texts = array_merge([$text], $extras);
+        $this->texts = ArrayUtil::arrayMerge([$text], $extras);
     }
 
     /**
